@@ -22,8 +22,8 @@ module INIH
       nv = case v
            when "true" then true
            when "false" then false
-           when /\A\d+\Z/ then Integer v
-           when /\A\d+\.\d+\Z/ then Float v
+           when /\A-?\d+\Z/ then Integer v
+           when /\A-?\d+\.\d+\Z/ then Float v
            else v
            end
 
