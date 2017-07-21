@@ -1,0 +1,4 @@
+ext/**/Makefile
+mkmf.log
+doc/
+.yardoc/
