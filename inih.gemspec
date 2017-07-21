@@ -11,6 +11,6 @@ Gem::Specification.new do |s|
   s.email = "william@tuffbizz.com"
   s.files = Dir["LICENSE", "README.md", ".yardopts", "lib/**/*.rb", "ext/**/*.c"]
   s.extensions << "ext/inih/extconf.rb"
-  s.homepage = "https://github.com/woodruffw/ruby-ini"
+  s.homepage = "https://github.com/woodruffw/ruby-inih"
   s.license = "MIT"
 end
