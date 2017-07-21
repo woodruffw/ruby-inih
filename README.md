@@ -1,6 +1,8 @@
 ruby-inih
 =========
 
+[![Gem Version](https://badge.fury.io/rb/inih.svg)](https://badge.fury.io/rb/inih)
+
 A Ruby wrapper for [inih](https://github.com/benhoyt/inih), a simple INI parser.
 
 ### Installation
