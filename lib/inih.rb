@@ -5,7 +5,7 @@ require_relative "../ext/inih/inih"
 # The primary namespace for {INIH}.
 module INIH
   # The current version of ruby-inih.
-  VERSION = "1.0.0"
+  VERSION = "1.1.0"
 
   # Normalize a parsed INI file's values.
   # @api private
@@ -20,6 +20,7 @@ module INIH
   def self.normalize_sect(sect)
     sect.map do |k, v|
       nv = case v
+           when "" then nil
            when "true" then true
            when "false" then false
            when /\A-?\d+\Z/ then Integer v

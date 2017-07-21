@@ -10,6 +10,7 @@ class INIHTest < Minitest::Test
     [strings]
     foo = bar
     baz = quux
+    zap =
 
     [types]
     bool1 = true
@@ -25,6 +26,7 @@ class INIHTest < Minitest::Test
     "strings" => {
       "foo" => "bar",
       "baz" => "quux",
+      "zap" => nil,
     },
 
     "types" => {
