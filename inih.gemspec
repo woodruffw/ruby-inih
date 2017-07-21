@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.description = "A native library for parsing INI files."
   s.authors = ["William Woodruff"]
   s.email = "william@tuffbizz.com"
-  s.files = Dir["LICENSE", "README.md", ".yardopts", "lib/**/*.rb", "ext/**/*.c"]
+  s.files = Dir["**/LICENSE", "README.md", ".yardopts", "lib/**/*.rb", "ext/**/*.{c,h}"]
   s.extensions << "ext/inih/extconf.rb"
   s.homepage = "https://github.com/woodruffw/ruby-inih"
   s.license = "MIT"
