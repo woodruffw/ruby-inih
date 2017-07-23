@@ -39,7 +39,6 @@ Integers, floating-point numbers, and booleans are coerced into their respective
 
 ### TODO
 
-* Unit tests
 * Coerce scientific-notation?
 
 ### License
