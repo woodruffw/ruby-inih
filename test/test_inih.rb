@@ -7,6 +7,10 @@ require "inih"
 # Unit tests for INIH.
 class INIHTest < Minitest::Test
   TEST_INI_DATA = <<~EOS
+    bare=pair
+    thisform : alsoworks
+    thisone:too
+
     [strings]
     foo = bar
     baz = quux
@@ -23,6 +27,12 @@ class INIHTest < Minitest::Test
   EOS
 
   TEST_EXP_HASH = {
+    "" => {
+      "bare" => "pair",
+      "thisform" => "alsoworks",
+      "thisone" => "too",
+    },
+
     "strings" => {
       "foo" => "bar",
       "baz" => "quux",
