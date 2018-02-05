@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "../ext/inih/inih"
+require_relative "ext/inih"
 
 # The primary namespace for {INIH}.
 module INIH

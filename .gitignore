@@ -3,3 +3,4 @@ mkmf.log
 doc/
 .yardoc/
 *.gem
+tmp/
