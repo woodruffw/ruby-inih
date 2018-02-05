@@ -5,7 +5,7 @@ require_relative "ext/inih"
 # The primary namespace for {INIH}.
 module INIH
   # The current version of ruby-inih.
-  VERSION = "1.1.0"
+  VERSION = "1.1.1"
 
   # Normalize a parsed INI file's values.
   # @api private
