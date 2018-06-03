@@ -1,0 +1,23 @@
+PATH
+  remote: .
+  specs:
+    inih (2.0.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rake (12.3.1)
+    rake-compiler (1.0.4)
+      rake
+    yard (0.9.14)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  inih!
+  rake-compiler
+  yard
+
+BUNDLED WITH
+   1.16.2

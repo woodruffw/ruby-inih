@@ -1,33 +1,29 @@
 #include "inih.h"
 
 VALUE mINIH = Qnil;
+VALUE cParseError = Qnil;
 
 static int mINIH_ini_handler(void *data, const char *sect, const char *name, const char *val);
 
 /*
-    @overload parse(string)
-        Parse an INI-formatted string into a Hash.
-        @param string [String] the INI-formatted string to parse
-        @return [Hash] the resulting hash
-        @raise [RuntimeError] if a parse error occurs
+    @overload parse_intern(string, normalize)
+    @api private
 */
-static VALUE mINIH_parse(VALUE self, VALUE string);
+static VALUE mINIH_parse_intern(VALUE self, VALUE string, VALUE normalize);
 
 /*
-    @overload load(filename)
-        Parse an INI-formatted file into a Hash.
-        @param filename [String] the INI-formatted file to parse
-        @return [Hash] the resulting hash
-        @raise [RuntimeError] if a parse or I/O error occurs
+    @overload load_intern(filename, normalize)
+    @api private
 */
-static VALUE mINIH_load(VALUE self, VALUE filename);
+static VALUE mINIH_load_intern(VALUE self, VALUE filename, VALUE normalize);
 
 void Init_inih()
 {
     mINIH = rb_define_module("INIH");
+    cParseError = rb_const_get(mINIH, rb_intern("ParseError"));
 
-    rb_define_singleton_method(mINIH, "parse", mINIH_parse, 1);
-    rb_define_singleton_method(mINIH, "load", mINIH_load, 1);
+    rb_define_singleton_method(mINIH, "parse_intern", mINIH_parse_intern, 2);
+    rb_define_singleton_method(mINIH, "load_intern", mINIH_load_intern, 2);
 }
 
 static int mINIH_ini_handler(void *data, const char *sect, const char *name, const char *val)
@@ -47,20 +43,25 @@ static int mINIH_ini_handler(void *data, const char *sect, const char *name, con
     return 1;
 }
 
-static VALUE mINIH_parse(VALUE self, VALUE string)
+static VALUE mINIH_parse_intern(VALUE self, VALUE string, VALUE normalize)
 {
     char *str = StringValueCStr(string);
     VALUE hash = rb_hash_new();
     int result;
 
     if ((result = ini_parse_string(str, mINIH_ini_handler, &hash)) != 0) {
-        rb_raise(rb_eRuntimeError, "parse error, line %d", result);
+        rb_raise(cParseError, "parse error, line %d", result);
     }
 
-    return rb_funcall(mINIH, rb_intern("normalize"), 1, hash);
+    if (normalize) {
+        return rb_funcall(mINIH, rb_intern("normalize_hash"), 1, hash);
+    }
+    else {
+        return hash;
+    }
 }
 
-static VALUE mINIH_load(VALUE self, VALUE filename)
+static VALUE mINIH_load_intern(VALUE self, VALUE filename, VALUE normalize)
 {
     char *file = StringValueCStr(filename);
     VALUE hash = rb_hash_new();
@@ -68,12 +69,17 @@ static VALUE mINIH_load(VALUE self, VALUE filename)
 
     if ((result = ini_parse(file, mINIH_ini_handler, &hash)) != 0) {
         if (result < 0) {
-            rb_raise(rb_eRuntimeError, "I/O error");
+            rb_raise(rb_eIOError, "I/O error");
         }
         else {
-            rb_raise(rb_eRuntimeError, "parse error, line %d", result);
+            rb_raise(cParseError, "parse error, line %d", result);
         }
     }
 
-    return rb_funcall(mINIH, rb_intern("normalize"), 1, hash);
+    if (normalize) {
+        return rb_funcall(mINIH, rb_intern("normalize_hash"), 1, hash);
+    }
+    else {
+        return hash;
+    }
 }

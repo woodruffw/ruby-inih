@@ -7,7 +7,7 @@ A Ruby wrapper for [inih](https://github.com/benhoyt/inih), a simple INI parser.
 
 ### Installation
 
-```ruby
+```bash
 $ gem install inih
 ```
 
@@ -35,11 +35,12 @@ INIH.parse "[section]\nkey=value"
 #=> {"section"=>{"key"=>"value"}}
 ```
 
-Integers, floating-point numbers, and booleans are coerced into their respective Ruby types.
+Integers, floating-point numbers, and booleans are coerced into their respective Ruby types by
+default, **unless** `normalize: false` is passed to either method.
 
 ### TODO
 
-* Coerce scientific-notation?
+* Coerce scientific notation?
 
 ### License
 
