@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/woodruffw/ruby-inih"
   s.license = "MIT"
 
+  s.add_development_dependency "minitest"
   s.add_development_dependency "rake-compiler"
   s.add_development_dependency "yard"
 end
