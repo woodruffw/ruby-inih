@@ -25,7 +25,6 @@ jobs:
       - name: setup
         run: |
           gem install bundler
-          bundle update --bundler
           bundle install
       - name: build
         run: bundle exec rake compile
