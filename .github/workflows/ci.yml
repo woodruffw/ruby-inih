@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  schedule:
+    - cron: '0 12 * * *'
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        ruby:
+          - "2.5"
+          - "2.6"
+          # - "2.7"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: setup
+        run: |
+          gem install bundler
+          bundle update --bundler
+          bundle install
+      - name: build
+        run: bundle exec rake compile
+      - name: test
+        run: bundle exec rake
+      - name: doc
+        run: bundle exec yard
