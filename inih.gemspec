@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "lib/inih"
+require_relative "lib/inih/version"
 
 Gem::Specification.new do |s|
   s.name = "inih"

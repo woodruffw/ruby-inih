@@ -2,6 +2,7 @@ ruby-inih
 =========
 
 [![Gem Version](https://badge.fury.io/rb/inih.svg)](https://badge.fury.io/rb/inih)
+[![Build Status](https://img.shields.io/github/workflow/status/woodruffw/ruby-inih/CI/master)](https://github.com/woodruffw/ruby-inih/actions?query=workflow%3ACI)
 
 A Ruby wrapper for [inih](https://github.com/benhoyt/inih), a simple INI parser.
 
