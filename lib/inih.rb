@@ -7,9 +7,6 @@ require_relative "ext/inih"
 module INIH
   module_function
 
-  # The current version of ruby-inih.
-  VERSION = "2.0.0"
-
   # Parse an INI-formatted string into a Hash.
   # @param string [String] the INI-formatted string to parse
   # @param normalize [Boolean] whether or not to normalize the types of parsed values
