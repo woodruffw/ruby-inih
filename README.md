@@ -1,6 +1,7 @@
 ruby-inih
 =========
 
+![license](https://raster.shields.io/badge/license-MIT%20with%20restrictions-green.png)
 [![Gem Version](https://badge.fury.io/rb/inih.svg)](https://badge.fury.io/rb/inih)
 [![Build Status](https://img.shields.io/github/workflow/status/woodruffw/ruby-inih/CI/master)](https://github.com/woodruffw/ruby-inih/actions?query=workflow%3ACI)
 
